@@ -463,6 +463,46 @@ body {
   background-color: var(--background-color) !important;
 }
 
+/* Strong dark-mode styles for professional no-photo portfolio card */
+[data-theme="dark"] .portfolio-card.no-thumb,
+[data-theme="dark"] .portfolio-card.no-thumb .card-body {
+  background: transparent !important;
+  color: var(--default-color) !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .card-title {
+  color: var(--default-color) !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .text-muted,
+[data-theme="dark"] .portfolio-card.no-thumb p,
+[data-theme="dark"] .portfolio-card.no-thumb .portfolio-badges .badge {
+  color: color-mix(in srgb, var(--default-color), transparent 60%) !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .badge-date {
+  background: var(--accent-color) !important;
+  color: var(--contrast-color) !important;
+  border: none !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .portfolio-badges .badge {
+  background: transparent !important;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 75%) !important;
+  color: var(--default-color) !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .btn-outline-dark {
+  color: var(--default-color) !important;
+  border-color: color-mix(in srgb, var(--default-color), transparent 75%) !important;
+}
+
+[data-theme="dark"] .portfolio-card.no-thumb .btn-dark {
+  background-color: var(--accent-color) !important;
+  color: var(--contrast-color) !important;
+  border-color: var(--accent-color) !important;
+}
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -519,6 +559,49 @@ section,
   background-color: var(--background-color);
   padding: 60px 0;
   overflow: clip;
+}
+
+/* Portfolio card improvements */
+.portfolio-card {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  will-change: transform;
+}
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+.portfolio-thumb {
+  height: 100%;
+  object-fit: cover;
+}
+.portfolio-badges .badge {
+  background: color-mix(in srgb, var(--default-color), transparent 92%);
+  font-weight: 600;
+}
+.btn-code i, .btn-view i { font-size: 0.9rem; vertical-align: middle; }
+
+@media (max-width: 767px) {
+  .portfolio-thumb { height: 220px; }
+  .portfolio-card { margin-bottom: 1rem; }
+}
+
+/* Styles for professional card without photo */
+.portfolio-card.no-thumb {
+  border-left: 4px solid color-mix(in srgb, var(--accent-color), black 10%);
+}
+.portfolio-card.no-thumb .card-body {
+  padding: 1.25rem 1.5rem;
+}
+.portfolio-card.no-thumb .card-title {
+  font-size: 1.125rem;
+}
+.portfolio-card.no-thumb .portfolio-badges .badge {
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  color: var(--default-color);
+}
+.portfolio-card.no-thumb .badge-date {
+  background: color-mix(in srgb, var(--default-color), transparent 95%);
 }
 
 /*--------------------------------------------------------------
