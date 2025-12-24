@@ -382,7 +382,7 @@ h6 {
   visibility: hidden;
   opacity: 0;
   right: 15px;
-  bottom: -15px;
+  bottom: 15px;
   z-index: 99999;
   background-color: var(--accent-color);
   width: 44px;
@@ -406,6 +406,61 @@ h6 {
   visibility: visible;
   opacity: 1;
   bottom: 15px;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  position: fixed;
+  bottom: 15px;
+  right: 75px;
+  z-index: 10000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent-color), transparent 10%);
+  color: var(--contrast-color);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.15s;
+}
+.theme-toggle i { font-size: 18px; }
+
+/* Smooth theme transitions */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme variables applied to root when user selects dark */
+[data-theme="dark"] {
+  --background-color: #0b0f14;
+  --default-color: #e6eef6;
+  --heading-color: #ffffff;
+  --accent-color: #A08803;
+  --surface-color: #111217;
+  --contrast-color: #ffffff;
+  --nav-color: #e6eef6;
+  --nav-hover-color: #D1B200;
+  --nav-mobile-background-color: #0b0f14;
+  --nav-dropdown-background-color: #111217;
+}
+
+/* Ensure elements using .light-background adapt in dark theme (footer, sections, etc.) */
+[data-theme="dark"] .light-background,
+[data-theme="dark"] .footer.light-background {
+  --background-color: #0b0f14;
+  --surface-color: #111217;
+  --default-color: #e6eef6;
+  --heading-color: #ffffff;
+  --contrast-color: #ffffff;
+}
+
+/* Specific safety: footer text/background override when dark theme active */
+[data-theme="dark"] .footer {
+  color: var(--default-color) !important;
+  background-color: var(--background-color) !important;
 }
 
 /*--------------------------------------------------------------

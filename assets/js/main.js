@@ -226,4 +226,39 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Theme (dark/light) toggle
+   */
+  const themeToggleBtn = document.getElementById('theme-toggle');
+
+  function applyTheme(theme) {
+    if (!themeToggleBtn) return;
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggleBtn.querySelector('i').classList.remove('bi-moon');
+      themeToggleBtn.querySelector('i').classList.add('bi-sun');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggleBtn.querySelector('i').classList.remove('bi-sun');
+      themeToggleBtn.querySelector('i').classList.add('bi-moon');
+    }
+  }
+
+  // initialize theme from localStorage or prefers-color-scheme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
+    });
+  }
+
 })();
